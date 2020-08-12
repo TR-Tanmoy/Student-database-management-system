@@ -151,7 +151,35 @@ void editData(){
         dif=getchar();
     }
 }
-
+///Function for Deleting Data from Database...
+void deleteData(){
+    char dif,xid[5];
+    system("cls");
+    cout<<"\n\t\t\t\t   ====Delete Data====\n\n\n\n";
+    dif='y';
+    while(dif=='y'||dif=='Y')
+    {
+        cout<<"\t\tEnter the ID-Number to delete data\n\n\t\t--->>>";
+        cin>>xid;
+        moy=fopen("Test.txt","w+");
+        rewind(ton);
+        while(fread(&st,recordSZ,1,ton)==1)
+        {
+            if(strcmp(st.id,xid)!=0)
+            {
+                fwrite(&st,recordSZ,1,moy);
+            }
+        }
+        fclose(ton);
+        fclose(moy);
+        remove("Tonmoy.txt");
+        rename("Test.txt","Tonmoy.txt");
+        ton=fopen("Tonmoy.txt","r+");
+        cout<<"Delete more data(Y/N)";
+        fflush(stdin);
+        dif=getchar();
+    }
+}
 
 
 ///Security Functions...
