@@ -277,6 +277,35 @@ void signUp(){
     }
 }
 
+///change password function...
+void changePassword(){
+    LL=fopen("Lock.o","r+");
+    fread(&L,rcLock,1,LL)==1;
+    char user[20],pass[20];
+    system("cls");
+    cout<<"\n\t\t\t\t    ==== Change Password ====\n\n\n\n";
+    cout<<"Enter Current Username\t\t::";
+    cin>>user;
+    cout<<"Enter Current Password\t\t::";
+    cin>>pass;
+    if((strcmp(L.userName,user)==0)&&(strcmp(L.passWord,pass)==0)){
+        cout<<"Enter New Username\t\t::";
+        cin>>L.userName;
+        cout<<"Enter New Password\t\t::";
+        cin>>L.passWord;
+        fseek(LL,-rcLock,SEEK_CUR);
+        fwrite(&L,rcLock,1,LL);
+        fclose(LL);
+        cout<<"Your Password has been changed Successfully.....";
+        getch();
+    }
+    else{
+        cout<<"\n\nYou Entered wrong username or password, So, You are an unauthorized person to change the password, Good Bye.....";
+        getch();
+        exitPrograms();
+    }
+}
+
 
 ///Security Functions...
 void signUp(){
