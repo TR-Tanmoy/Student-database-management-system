@@ -187,7 +187,14 @@ void aboutDevelopers(){
     cout<<"Developer::\n\tName\t\t::Md. Tahadur Rahman\n\tID-Number\t::CSE-11170320115\n\tDepartment\t::CSE\n\tPhone Number\t::01754-198218\n\tE-mail Address\t::trtanmoy1@gmail.com\n\tBatch Name\t::Fall 2017";
     getch();
 }
-
+///Function for closing the program...
+void exitPrograms(){
+    system("cls");
+    cout<<"\n\t\t\t\t    ====Exit program====\n\n\n\n";
+    cout<<"\tThanks For Using This Software\n\n\t     Be Healthy, Be Fresh\n\t    Wish You All The Best.....\n\n\t\t\t\tT.R. Tonmoy\n\t\tBye Bye\n\n";
+    getch();
+    exit(0);
+}
 
 ///Security Functions...
 void signUp(){
