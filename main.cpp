@@ -57,6 +57,25 @@ void addData(){
     fclose(ton);
 }
 
+///Function for Showing all Data from Database...
+void viewData(){
+    rewind(ton);
+    int x=1;
+    system("cls");
+    cout<<"\n\t\t\t\t    ====View Data====\n\n\n\n";
+
+    while(fread(&st,recordSZ,1,ton)==1)
+    {
+        cout<<"\n"<<x<<"..\n\t\tName\t\t\t:: "<<st.f_name<<" "<<st.l_name;
+        cout<<"\n\t\tID-Number\t\t:: "<<st.id<<"\n\t\tDepartment\t\t:: "<<st.dpt;
+        cout<<"\n\t\tDate of Birth\t\t:: "<<st.DOB<<"\n\t\tBlood Group\t\t:: "<<st.bld_Group;
+        cout<<"\n\t\tPhone Number\t\t:: "<<st.phn<<"\n\t\tE-mail Address\t\t:: "<<st.eml<<"\n\t\tBatch Name\t\t:: "<<st.btch;
+        x++;
+    }
+    cout<<"\n\n";
+    getch();
+}
+
 
 ///Security Functions...
 void signUp(){
