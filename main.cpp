@@ -8,6 +8,7 @@ using namespace std;
 
 FILE *ton,*moy,*LL;
 
+///Initializing Functions
 struct student
 {
     char f_name[50],l_name[50],id[50],dpt[50],DOB[50],bld_Group[5],phn[50],eml[50],btch[50];
@@ -19,7 +20,42 @@ struct lock{
     char userName[50],passWord[50];
 }L;
 long int rcLock=sizeof(L);
-///Initializing Functions
+
+
+///Function for Adding Data to the Database...
+void addData(){
+    char dif;
+    fseek(ton,0,SEEK_END);
+    dif='y';
+    while(dif=='y'||dif=='Y')
+    {
+        system("cls");
+        cout<<"\n\t\t\t\t     ====Add Data====\n\n\n\n";
+        cout<<"Enter First Name\t\t::";
+        cin>>st.f_name;
+        cout<<"Enter Last Name\t\t\t::";
+        cin>>st.l_name;
+        cout<<"Enter ID-Number\t\t\t::";
+        cin>>st.id;
+        cout<<"Enter Department\t\t::";
+        cin>>st.dpt;
+        cout<<"Enter Date of Birth\t\t::";
+        cin>>st.DOB;
+        cout<<"Enter Blood Group\t\t::";
+        cin>>st.bld_Group;
+        cout<<"Enter Phone Number\t\t::";
+        cin>>st.phn;
+        cout<<"Enter E-mail Address\t\t::";
+        cin>>st.eml;
+        cout<<"Enter Batch Name\t\t::";
+        cin>>st.btch;
+        fwrite(&st,recordSZ,1,ton);
+        cout<<"\n\nAdd more data(Y/N)::";
+        fflush(stdin);
+        dif=getchar();
+    }
+    fclose(ton);
+}
 
 
 ///Security Functions...
