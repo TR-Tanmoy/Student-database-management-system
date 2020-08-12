@@ -246,6 +246,36 @@ void DisplayMainMenu(){
         }
     }
 }
+///Security Functions...
+void signUp(){
+    system("cls");
+    LL=fopen("Lock.o","w+");
+    char choice;
+    cout<<"\n\t\t\t\t    ==== Welcome ====\n\n\n\n";
+    cout<<"\n\t\t\t\t==========================\n";
+    cout<<"\t\t\t\t1.SIGN UP\n\t\t\t\t2.EXIT";
+    cout<<"\n\t\t\t\t==========================\n";
+    cout<<"\n\t\t\t\t--->>>";
+    fflush(stdin);
+    choice=getche();
+
+    switch (choice)
+    {
+        case '1':
+            system("cls");
+            cout<<"\n\t\t\t\t    ==== SignUp ====\n\n\n\n";
+            cout<<"Enter a New Username\t\t::";
+            cin>>L.userName;
+            cout<<"Enter a New Password\t\t::";
+            cin>>L.passWord;
+            fwrite(&L,rcLock,1,LL);
+            fclose(LL);
+            break;
+        case '2':
+            exitPrograms();
+            break;
+    }
+}
 
 
 ///Security Functions...
