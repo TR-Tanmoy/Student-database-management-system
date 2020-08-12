@@ -106,6 +106,52 @@ void searchData(){
         dif=getchar();
     }
 }
+///Function for Editing Data from Database...
+void editData(){
+    system("cls");
+    char dif,xid[10],n='n';
+    cout<<"\n\t\t\t\t    ====Edit Data====\n\n\n\n";
+    dif='y';
+    while(dif=='y'||dif=='Y')
+    {
+        cout<<"\t\tEnter ID-Number to edit data\n\n\t\t--->>>";
+        cin>>xid;
+        rewind(ton);
+        while(fread(&st,recordSZ,1,ton)==1)
+        {
+            if(strcmp(st.id,xid)==0)
+            {
+                cout<<"Enter First Name\t\t::";
+                cin>>st.f_name;
+                cout<<"Enter Last Name\t\t\t::";
+                cin>>st.l_name;
+                cout<<"Enter ID-Number\t\t\t::";
+                cin>>st.id;
+                cout<<"Enter Department\t\t::";
+                cin>>st.dpt;
+                cout<<"Enter Date of Birth\t\t::";
+                cin>>st.DOB;
+                cout<<"Enter Blood Group\t\t::";
+                cin>>st.bld_Group;
+                cout<<"Enter Phone Number\t\t::";
+                cin>>st.phn;
+                cout<<"Enter E-mail Address\t\t::";
+                cin>>st.eml;
+                cout<<"Enter Batch Name\t\t::";
+                cin>>st.btch;
+                fseek(ton,-recordSZ,SEEK_CUR);
+                fwrite(&st,recordSZ,1,ton);
+                n='z';
+                break;
+            }
+        }
+        if(n!='z'){cout<<"\n\n\n\t\"Not Found in Database\"";}
+        cout<<"Edit more data(Y/N)::";
+        fflush(stdin);
+        dif=getchar();
+    }
+}
+
 
 
 ///Security Functions...
