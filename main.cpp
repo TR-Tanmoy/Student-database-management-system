@@ -1,4 +1,4 @@
-#include <iostream>
+#include<iostream>
 #include<stdio.h>
 #include<conio.h>
 #include<stdlib.h>
@@ -8,7 +8,6 @@ using namespace std;
 
 FILE *ton,*moy,*LL;
 
-///Initializing Functions
 struct student
 {
     char f_name[50],l_name[50],id[50],dpt[50],DOB[50],bld_Group[5],phn[50],eml[50],btch[50];
@@ -20,8 +19,7 @@ struct lock{
     char userName[50],passWord[50];
 }L;
 long int rcLock=sizeof(L);
-
-
+///Initializing Functions
 ///Function for Adding Data to the Database...
 void addData(){
     char dif;
@@ -106,6 +104,7 @@ void searchData(){
         dif=getchar();
     }
 }
+
 ///Function for Editing Data from Database...
 void editData(){
     system("cls");
@@ -151,6 +150,7 @@ void editData(){
         dif=getchar();
     }
 }
+
 ///Function for Deleting Data from Database...
 void deleteData(){
     char dif,xid[5];
@@ -180,6 +180,7 @@ void deleteData(){
         dif=getchar();
     }
 }
+
 ///Function for Showing Developers Information...
 void aboutDevelopers(){
     system("cls");
@@ -187,6 +188,7 @@ void aboutDevelopers(){
     cout<<"Developer::\n\tName\t\t::Md. Tahadur Rahman\n\tID-Number\t::CSE-11170320115\n\tDepartment\t::CSE\n\tPhone Number\t::01754-198218\n\tE-mail Address\t::trtanmoy1@gmail.com\n\tBatch Name\t::Fall 2017";
     getch();
 }
+
 ///Function for closing the program...
 void exitPrograms(){
     system("cls");
@@ -246,108 +248,6 @@ void DisplayMainMenu(){
         }
     }
 }
-///Security Functions...
-void signUp(){
-    system("cls");
-    LL=fopen("Lock.o","w+");
-    char choice;
-    cout<<"\n\t\t\t\t    ==== Welcome ====\n\n\n\n";
-    cout<<"\n\t\t\t\t==========================\n";
-    cout<<"\t\t\t\t1.SIGN UP\n\t\t\t\t2.EXIT";
-    cout<<"\n\t\t\t\t==========================\n";
-    cout<<"\n\t\t\t\t--->>>";
-    fflush(stdin);
-    choice=getche();
-
-    switch (choice)
-    {
-        case '1':
-            system("cls");
-            cout<<"\n\t\t\t\t    ==== SignUp ====\n\n\n\n";
-            cout<<"Enter a New Username\t\t::";
-            cin>>L.userName;
-            cout<<"Enter a New Password\t\t::";
-            cin>>L.passWord;
-            fwrite(&L,rcLock,1,LL);
-            fclose(LL);
-            break;
-        case '2':
-            exitPrograms();
-            break;
-    }
-}
-
-///change password function...
-void changePassword(){
-    LL=fopen("Lock.o","r+");
-    fread(&L,rcLock,1,LL)==1;
-    char user[20],pass[20];
-    system("cls");
-    cout<<"\n\t\t\t\t    ==== Change Password ====\n\n\n\n";
-    cout<<"Enter Current Username\t\t::";
-    cin>>user;
-    cout<<"Enter Current Password\t\t::";
-    cin>>pass;
-    if((strcmp(L.userName,user)==0)&&(strcmp(L.passWord,pass)==0)){
-        cout<<"Enter New Username\t\t::";
-        cin>>L.userName;
-        cout<<"Enter New Password\t\t::";
-        cin>>L.passWord;
-        fseek(LL,-rcLock,SEEK_CUR);
-        fwrite(&L,rcLock,1,LL);
-        fclose(LL);
-        cout<<"Your Password has been changed Successfully.....";
-        getch();
-    }
-    else{
-        cout<<"\n\nYou Entered wrong username or password, So, You are an unauthorized person to change the password, Good Bye.....";
-        getch();
-        exitPrograms();
-    }
-}
-///login function....
-void logIn(){
-    LL=fopen("Lock.o","r+");
-    fread(&L,rcLock,1,LL)==1;
-    char choice;
-    int i=1;
-    cout<<"\n\t\t\t\t    ==== Welcome ====\n\n\n\n";
-    cout<<"\n\t\t\t\t==========================\n";
-    cout<<"\t\t\t\t1.LOG IN\n\t\t\t\t2.CHANGE PASSWORD\n\t\t\t\t3.EXIT";
-    cout<<"\n\t\t\t\t==========================\n";
-    cout<<"\n\t\t\t\t--->>>";
-    fflush(stdin);
-    choice=getche();
-    switch (choice)
-    {
-        case '1':
-            system("cls");
-            cout<<"\n\t\t\t\t    ==== LogIn ====\n\n\n\n";
-            char user[20],pass[20];
-            cout<<"Enter the Username\t\t::";
-            cin>>user;
-            cout<<"Enter the Password\t\t::";
-            cin>>pass;
-            while((strcmp(L.userName,user)!=0)&&(strcmp(L.passWord,pass)!=0)){
-                i++;
-                system("cls");
-                cout<<"\n\t\t\t\t    ==== LogIn ====\n\n\n\n";
-                cout<<"Enter the Username\t\t::";
-                cin>>user;
-                cout<<"Enter the Password\t\t::";
-                cin>>pass;
-                if(i==3){getch();cout<<"You entered Either wrong username or wrong password for three times. \nGood Bye...";getch();exitPrograms();}
-            }
-            break;
-        case '2':
-            changePassword();
-            break;
-        case '3':
-            exitPrograms();
-            break;
-    }
-}
-
 
 
 ///Security Functions...
@@ -451,7 +351,6 @@ void logIn(){
             break;
     }
 }
-
 
 ///Head Security Panel.
 void Security(){
