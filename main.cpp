@@ -76,6 +76,37 @@ void viewData(){
     getch();
 }
 
+///Function for Searching Individual Data from Database...
+void searchData(){
+    char dif,xid[10],n='n';
+    dif='y';
+    while(dif=='y'||dif=='Y')
+    {
+        system("cls");
+        cout<<"\n\t\t\t\t    ====Search Data====\n\n\n\n";
+        cout<<"\t\t\tEnter ID-Number to Search Data\n\t\t\t--->>>";
+        cin>>xid;
+        rewind(ton);
+        while(fread(&st,recordSZ,1,ton)==1)
+        {
+            if(strcmp(st.id,xid)==0)
+            {
+                cout<<"\n\t\tName\t\t\t:: "<<st.f_name<<" "<<st.l_name;
+                cout<<"\n\t\tID-Number\t\t:: "<<st.id<<"\n\t\tDepartment\t\t:: "<<st.dpt;
+                cout<<"\n\t\tDate of Birth\t\t:: "<<st.DOB<<"\n\t\tBlood Group\t\t:: "<<st.bld_Group;
+                cout<<"\n\t\tPhone Number\t\t:: "<<st.phn<<"\n\t\tE-mail Address\t\t:: "<<st.eml<<"\n\t\tBatch Name\t\t:: "<<st.btch;
+                n='z';
+            }
+        }
+        if(n!='z'){cout<<"\n\n\n\t\"Not Found in Database\"";}
+        cout<<"\n\n";
+        getch();
+        cout<<"View more Data(Y/N)::";
+        fflush(stdin);
+        dif=getchar();
+    }
+}
+
 
 ///Security Functions...
 void signUp(){
