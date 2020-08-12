@@ -305,6 +305,49 @@ void changePassword(){
         exitPrograms();
     }
 }
+///login function....
+void logIn(){
+    LL=fopen("Lock.o","r+");
+    fread(&L,rcLock,1,LL)==1;
+    char choice;
+    int i=1;
+    cout<<"\n\t\t\t\t    ==== Welcome ====\n\n\n\n";
+    cout<<"\n\t\t\t\t==========================\n";
+    cout<<"\t\t\t\t1.LOG IN\n\t\t\t\t2.CHANGE PASSWORD\n\t\t\t\t3.EXIT";
+    cout<<"\n\t\t\t\t==========================\n";
+    cout<<"\n\t\t\t\t--->>>";
+    fflush(stdin);
+    choice=getche();
+    switch (choice)
+    {
+        case '1':
+            system("cls");
+            cout<<"\n\t\t\t\t    ==== LogIn ====\n\n\n\n";
+            char user[20],pass[20];
+            cout<<"Enter the Username\t\t::";
+            cin>>user;
+            cout<<"Enter the Password\t\t::";
+            cin>>pass;
+            while((strcmp(L.userName,user)!=0)&&(strcmp(L.passWord,pass)!=0)){
+                i++;
+                system("cls");
+                cout<<"\n\t\t\t\t    ==== LogIn ====\n\n\n\n";
+                cout<<"Enter the Username\t\t::";
+                cin>>user;
+                cout<<"Enter the Password\t\t::";
+                cin>>pass;
+                if(i==3){getch();cout<<"You entered Either wrong username or wrong password for three times. \nGood Bye...";getch();exitPrograms();}
+            }
+            break;
+        case '2':
+            changePassword();
+            break;
+        case '3':
+            exitPrograms();
+            break;
+    }
+}
+
 
 
 ///Security Functions...
