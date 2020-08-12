@@ -196,6 +196,58 @@ void exitPrograms(){
     exit(0);
 }
 
+///Display Main Menu
+void DisplayMainMenu(){
+    char choice;
+    ton=fopen("Tonmoy.txt","r+");
+    if(ton==NULL)
+    {
+        ton=fopen("Tonmoy.txt","w+");
+        if(ton=NULL)
+        {
+            cout<<"FILE can't open!!! ";
+            exit(0);
+        }
+    }
+
+    while(1){
+        system("cls");
+        cout<<"\n\t\t\t\t    ====MAIN MENU====\n\n\n\n";
+        cout<<"\n\t\t\t\t==========================\n";
+        cout<<"\t\t\t\t1.ADD DATA\n\t\t\t\t2.VIEW DATA\n\t\t\t\t3.SEARCH DATA\n\t\t\t\t4.EDIT DATA\n\t\t\t\t5.DELETE DATA\n\t\t\t\t6.ABOUT\n\t\t\t\t7.EXIT";
+        cout<<"\n\t\t\t\t==========================\n";
+        cout<<"\n\t\t\t\t--->>>";
+        fflush(stdin);
+        choice=getche();
+
+        switch (choice)
+        {
+            case '1':
+                addData();
+                break;
+            case '2':
+                viewData();
+                break;
+            case '3':
+                searchData();
+                break;
+            case '4':
+                editData();
+                break;
+            case '5':
+                deleteData();
+                break;
+            case '6':
+                aboutDevelopers();
+                break;
+            case '7':
+                exitPrograms();
+                break;
+        }
+    }
+}
+
+
 ///Security Functions...
 void signUp(){
     system("cls");
