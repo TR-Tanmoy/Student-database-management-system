@@ -8,6 +8,20 @@ using namespace std;
 
 FILE *ton,*moy,*LL;
 
+struct student
+{
+    char f_name[50],l_name[50],id[50],dpt[50],DOB[50],bld_Group[5],phn[50],eml[50],btch[50];
+}st;
+
+long int recordSZ=sizeof(st);
+
+struct lock{
+    char userName[50],passWord[50];
+}L;
+long int rcLock=sizeof(L);
+///Initializing Functions
+
+
 ///Security Functions...
 void signUp(){
     system("cls");
